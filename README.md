@@ -223,22 +223,21 @@ Please cite these works if you found it useful:
 [Surface Vision Transformers: Attention-Based Modelling applied to Cortical Analysis](https://arxiv.org/abs/2203.16414)
 
 ```
-@article{dahan2022surface,
-  title={Surface Vision Transformers: Attention-Based Modelling applied to Cortical Analysis},
-  author={Dahan, Simon and Fawaz, Abdulah and Williams, Logan ZJ and Yang, Chunhui and Coalson, Timothy S and Glasser, Matthew F and Edwards, A David and Rueckert, Daniel and Robinson, Emma C},
-  journal={arXiv preprint arXiv:2203.16414},
-  year={2022}
+@InProceedings{pmlr-v172-dahan22a,
+  title = 	 {Surface Vision Transformers: Attention-Based Modelling applied to Cortical Analysis},
+  author =       {Dahan, Simon and Fawaz, Abdulah and Williams, Logan Z. J. and Yang, Chunhui and Coalson, Timothy S. and Glasser, Matthew F. and Edwards, A. David and Rueckert, Daniel and Robinson, Emma C.},
+  booktitle = 	 {Proceedings of The 5th International Conference on Medical Imaging with Deep Learning},
+  pages = 	 {282--303},
+  year = 	 {2022},
+  editor = 	 {Konukoglu, Ender and Menze, Bjoern and Venkataraman, Archana and Baumgartner, Christian and Dou, Qi and Albarqouni, Shadi},
+  volume = 	 {172},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {06--08 Jul},
+  publisher =    {PMLR},
+  pdf = 	 {https://proceedings.mlr.press/v172/dahan22a/dahan22a.pdf},
+  url = 	 {https://proceedings.mlr.press/v172/dahan22a.html},
 }
-```
-[Surface Vision Transformers: Flexible Attention-Based Modelling of Biomedical Surfaces](https://arxiv.org/abs/2204.03408)
 
-```
-@article{dahan2022surface,
-  title={Surface Vision Transformers: Flexible Attention-Based Modelling of Biomedical Surfaces},
-  author={Dahan, Simon and Xu, Hao and Williams, Logan ZJ and Fawaz, Abdulah and Yang, Chunhui and Coalson, Timothy S and Williams, Michelle C and Newby, David E and Edwards, A David and Glasser, Matthew F and others},
-  journal={arXiv preprint arXiv:2204.03408},
-  year={2022}
-}
 ```
 
 
