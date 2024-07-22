@@ -12,6 +12,14 @@ Here, Surface Vision Transformer (**SiT**) is applied on cortical data for pheno
 # Updates
 
 <details>
+    <summary><b> V.2.0 - 22.07.24</b></summary>
+    Major codebase update - 22.07.24
+    <ul type="circle">
+        <li> Adding MS-SiT model into the codebase</li>
+    </ul>
+</details>
+
+<details>
     <summary><b> V.1.1 - 12.02.24</b></summary>
     Major codebase update - 12.02.24
     <ul type="circle">
