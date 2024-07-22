@@ -2,14 +2,14 @@
 # @Last Modified time: 2022-01-12 15:36:28
 resolution:
   ico: 6
-  sub_ico: 2
+  sub_ico: 4
 
 data:
   data_path:  /data/dHCP/
   label_path: ../labels/dHCP/
-  task: birth_age #scan_age #birth_age
+  task: scan_age #scan_age #birth_age
   configuration: template #template #native
-  split: train #train #validation
+  split: test #train #validation
   channels: 4
 
 output:
@@ -23,5 +23,14 @@ sub_ico_2:
     num_patches: 320 
     num_vertices: 153 
 
+sub_ico_3:
+    num_patches: 1280
+    num_vertices: 45
 
+sub_ico_4:
+    num_patches: 5120
+    num_vertices: 15
 
+sub_ico_5:
+    num_patches: 20480
+    num_vertices: 6

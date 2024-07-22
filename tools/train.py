@@ -40,6 +40,8 @@ import numpy as np
 import pandas as pd
 
 from models.sit import SiT
+from models.ms_sit import MSSiT
+from models.ms_sit_shifted import MSSiT_shifted
 
 from utils.utils import load_weights_imagenet
 
@@ -210,6 +212,53 @@ def train(config):
                         dropout=config['transformer']['dropout'],
                         emb_dropout=config['transformer']['emb_dropout'])
     
+
+    elif config['transformer']['model'] == 'ms-sit':
+        if config['transformer']['shifted_attention']:
+            print('*** using shifted attention with shifting factor {} ***'.format(config['transformer']['window_size_factor']))
+            model = MSSiT_shifted(ico_init_resolution=config['resolution']['sub_ico'],
+                                    num_channels=len(config['transformer']['channels']),
+                                    num_classes=config['transformer']['num_classes'],
+                                    embed_dim=config['transformer']['dim'],
+                                    depths=config['transformer']['depth'],
+                                    num_heads=config['transformer']['heads'],
+                                    window_size=config['transformer']['window_size'],
+                                    window_size_factor=config['transformer']['window_size_factor'],
+                                    mlp_ratio=config['transformer']['mlp_ratio'],
+                                    qkv_bias=True,
+                                    qk_scale=True,
+                                    dropout=config['transformer']['dropout'],
+                                    attention_dropout=config['transformer']['attention_dropout'],
+                                    drop_path_rate=config['transformer']['drop_path_rate'],
+                                    norm_layer=nn.LayerNorm,
+                                    use_pos_emb=config['transformer']['use_pos_emb'],
+                                    patch_norm=True,
+                                    use_confounds=config['training']['use_confounds'],
+                                    device=device
+                                    )
+        
+        else: 
+            model = MSSiT(ico_init_resolution=config['resolution']['sub_ico'],
+                            num_channels=len(config['transformer']['channels']),
+                            num_classes=config['transformer']['num_classes'],
+                            embed_dim=config['transformer']['dim'],
+                            depths=config['transformer']['depth'],
+                            num_heads=config['transformer']['heads'],
+                            window_size=config['transformer']['window_size'],
+                            mlp_ratio=config['transformer']['mlp_ratio'],
+                            qkv_bias=True,
+                            qk_scale=True,
+                            dropout=config['transformer']['dropout'],
+                            attention_dropout=config['transformer']['attention_dropout'],
+                            drop_path_rate=config['transformer']['drop_path_rate'],
+                            norm_layer=nn.LayerNorm,
+                            use_pos_emb=config['transformer']['use_pos_emb'],
+                            patch_norm=True,
+                            use_confounds=config['training']['use_confounds'],
+                            device=device
+                            )
+        
+    import pdb;pdb.set_trace()
     if config['training']['load_weights_ssl']:
 
         print('Loading weights from self-supervision training')
