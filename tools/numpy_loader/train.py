@@ -10,7 +10,7 @@
 
 
 '''
-This file implements the training procedure to train a SiT model.
+This file implements the training procedure to train a SiT/MS-SiT model.
 Models can be either trained:
     - from scratch
     - from pretrained weights (after self-supervision or ImageNet for instance)
@@ -64,7 +64,7 @@ def train(config):
     ico = config['resolution']['ico']
     sub_ico = config['resolution']['sub_ico']
 
-    data_path = config['data']['data_path'].format(task,configuration)
+    data_path = config['data']['data_path'].format(sub_ico,task,configuration)
     
     folder_to_save_model = config['logging']['folder_to_save_model']
 
@@ -258,7 +258,6 @@ def train(config):
                             device=device
                             )
         
-    import pdb;pdb.set_trace()
     if config['training']['load_weights_ssl']:
 
         print('Loading weights from self-supervision training')
@@ -271,7 +270,6 @@ def train(config):
         new_state_dict = load_weights_imagenet(model.state_dict(),model_trained.state_dict(),config['transformer']['depth'])
         model.load_state_dict(new_state_dict)
     
-
     model.to(device)
 
     if config['optimisation']['optimiser']=='Adam':
@@ -373,8 +371,9 @@ def train(config):
                     inputs, targets = data[0].to(device), data[1].to(device)
 
                     outputs = model(inputs)
+                    #import pdb;pdb.set_trace()
 
-                    loss = criterion(outputs.squeeze(), targets)
+                    loss = criterion(outputs.squeeze(1), targets)
 
                     running_val_loss += loss.item()
 
@@ -431,19 +430,67 @@ def train(config):
         del val_data
         del model
         torch.cuda.empty_cache()
+        
+        if config['transformer']['model'] == 'SiT':
 
-        test_model = SiT(dim=config['transformer']['dim'],
-                    depth=config['transformer']['depth'],
-                    heads=config['transformer']['heads'],
-                    mlp_dim=config['transformer']['mlp_dim'],
-                    pool=config['transformer']['pool'], 
-                    num_patches=num_patches,
-                    num_classes=config['transformer']['num_classes'],
-                    num_channels=config['transformer']['num_channels'],
-                    num_vertices=num_vertices,
-                    dim_head=config['transformer']['dim_head'],
-                    dropout=config['transformer']['dropout'],
-                    emb_dropout=config['transformer']['emb_dropout'])
+            test_model = SiT(dim=config['transformer']['dim'],
+                        depth=config['transformer']['depth'],
+                        heads=config['transformer']['heads'],
+                        mlp_dim=config['transformer']['mlp_dim'],
+                        pool=config['transformer']['pool'], 
+                        num_patches=num_patches,
+                        num_classes=config['transformer']['num_classes'],
+                        num_channels=config['transformer']['num_channels'],
+                        num_vertices=num_vertices,
+                        dim_head=config['transformer']['dim_head'],
+                        dropout=config['transformer']['dropout'],
+                        emb_dropout=config['transformer']['emb_dropout'])
+            
+
+        elif config['transformer']['model'] == 'ms-sit':
+            if config['transformer']['shifted_attention']:
+                print('*** using shifted attention with shifting factor {} ***'.format(config['transformer']['window_size_factor']))
+                test_model = MSSiT_shifted(ico_init_resolution=config['resolution']['sub_ico'],
+                                        num_channels=len(config['transformer']['channels']),
+                                        num_classes=config['transformer']['num_classes'],
+                                        embed_dim=config['transformer']['dim'],
+                                        depths=config['transformer']['depth'],
+                                        num_heads=config['transformer']['heads'],
+                                        window_size=config['transformer']['window_size'],
+                                        window_size_factor=config['transformer']['window_size_factor'],
+                                        mlp_ratio=config['transformer']['mlp_ratio'],
+                                        qkv_bias=True,
+                                        qk_scale=True,
+                                        dropout=config['transformer']['dropout'],
+                                        attention_dropout=config['transformer']['attention_dropout'],
+                                        drop_path_rate=config['transformer']['drop_path_rate'],
+                                        norm_layer=nn.LayerNorm,
+                                        use_pos_emb=config['transformer']['use_pos_emb'],
+                                        patch_norm=True,
+                                        use_confounds=config['training']['use_confounds'],
+                                        device=device
+                                        )
+            
+            else: 
+                test_model = MSSiT(ico_init_resolution=config['resolution']['sub_ico'],
+                                num_channels=len(config['transformer']['channels']),
+                                num_classes=config['transformer']['num_classes'],
+                                embed_dim=config['transformer']['dim'],
+                                depths=config['transformer']['depth'],
+                                num_heads=config['transformer']['heads'],
+                                window_size=config['transformer']['window_size'],
+                                mlp_ratio=config['transformer']['mlp_ratio'],
+                                qkv_bias=True,
+                                qk_scale=True,
+                                dropout=config['transformer']['dropout'],
+                                attention_dropout=config['transformer']['attention_dropout'],
+                                drop_path_rate=config['transformer']['drop_path_rate'],
+                                norm_layer=nn.LayerNorm,
+                                use_pos_emb=config['transformer']['use_pos_emb'],
+                                patch_norm=True,
+                                use_confounds=config['training']['use_confounds'],
+                                device=device
+                                )
 
 
         print('loading model')

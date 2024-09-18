@@ -6,14 +6,14 @@ resolution:
 
 data:
   data_path:  /data/dHCP/
-  label_path: ../labels/dHCP/
+  label_path: ../../labels/dHCP/
   task: scan_age #scan_age #birth_age
   configuration: template #template #native
   split: test #train #validation
   channels: 4
 
 output:
-  folder: ../data/{}/{}/
+  folder: ../../data/{}/{}/
 
 sub_ico_1:
     num_patches: 80 

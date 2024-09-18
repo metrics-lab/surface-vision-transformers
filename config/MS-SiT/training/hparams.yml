@@ -5,22 +5,22 @@ resolution:
   sub_ico: 4        ## patching grid resolution
 
 data:
-  data_path: ../data_ico4/{}/{}
+  data_path: ../../data/ico_res_{}/{}/{}
   task: scan_age #scan_age # birth_age
   configuration: template #template # native
   dataset: dHCP                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 
 logging:
-  folder_to_save_model: "../logs/SiT/"
+  folder_to_save_model: "../../logs/SiT/"
 
 training:
   LR: 0.00001
   bs: 16
   bs_val: 1
-  epochs: 100
-  gpu: 0
+  epochs: 30
+  gpu: 1  
   l1loss: False
-  testing: False
+  testing: True
   val_epoch: 10
   load_weights_ssl: False
   load_weights_imagenet: False
@@ -48,7 +48,7 @@ transformer:
   attention_dropout: 0.0
   drop_path_rate: 0.1 #0.1 default to try
   use_pos_emb: False
-  shifted_attention: False
+  shifted_attention: True
   model: ms-sit #ms-sit
 
 optimisation:
