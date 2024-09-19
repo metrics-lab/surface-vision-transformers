@@ -318,11 +318,11 @@ class MSSiTUNet(nn.Module):
         self.num_channels = num_channels
         self.device = device
         
-        self.indices = pd.read_csv('{}/patch_extraction/msm/triangle_indices_ico_6_sub_ico_{}.csv'.format(path_to_workdir,ico_init_resolution))
+        self.indices = pd.read_csv('{}/patch_extraction/triangle_indices_ico_6_sub_ico_{}.csv'.format(path_to_workdir,ico_init_resolution))
         
         if reorder:
             print('** reorder patches **')
-            new_order_indices = np.load('{}/patch_extraction/order_patches/order_ico{}.npy'.format(path_to_workdir,ico_init_resolution))
+            new_order_indices = np.load('{}/patch_extraction/reorder_patches/order_ico{}.npy'.format(path_to_workdir,ico_init_resolution))
             d = {str(new_order_indices[i]):str(i) for i in range(len(self.indices.columns))}
             self.indices = self.indices[list([str(i) for i in new_order_indices])]
             self.indices = self.indices.rename(columns=d)
