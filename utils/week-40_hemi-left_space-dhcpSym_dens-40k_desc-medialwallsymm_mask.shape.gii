@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GIFTI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="http://brainvis.wustl.edu/caret6/xml_schemas/GIFTI_Caret.xsd"
+       Version="1"
+       NumberOfDataArrays="1">
+   <MetaData>
+      <MD>
+         <Name><![CDATA[AnatomicalStructurePrimary]]></Name>
+         <Value><![CDATA[CortexLeft]]></Value>
+      </MD>
+      <MD>
+         <Name><![CDATA[ParentProvenance]]></Name>
+         <Value><![CDATA[/data/Data/dHCP_1/dhcp_3rd_release_atlas/week-40_hemi-left_space-dhcpSym_dens-40k_desc-medialwallsymm_mask.shape.gii:
+wb_command -metric-resample /data/Data/dHCP_1/dhcp_3rd_release_atlas/week-40_hemi-left_space-dhcpSym_dens-32k_desc-medialwallsymm_mask.shape.gii /data/Data/dHCP_1/dhcp_3rd_release_atlas/dhcpSym_3rd_release/dhcpSym_template_online/dhcpSym_template/week-40_hemi-left_space-dhcpSym_dens-32k_sphere.surf.gii /home/lw19/Downloads/ico-6-L.surf.gii BARYCENTRIC /data/Data/dHCP_1/dhcp_3rd_release_atlas/week-40_hemi-left_space-dhcpSym_dens-40k_desc-medialwallsymm_mask.shape.gii
+
+]]></Value>
+      </MD>
+      <MD>
+         <Name><![CDATA[ProgramProvenance]]></Name>
+         <Value><![CDATA[Connectome Workbench
+Type: Command Line Application
+Version: 1.5.0
+Qt Compiled Version: 5.9.5
+Qt Runtime Version: 5.9.5
+Commit: unknown
+Commit Date: unknown
+Compiled with OpenMP: YES
+Compiler: c++ (/usr/lib/ccache)
+Compiler Version: 7.3.0
+Compiled Debug: NO
+Operating System: Linux
+]]></Value>
+      </MD>
+      <MD>
+         <Name><![CDATA[Provenance]]></Name>
+         <Value><![CDATA[wb_command -metric-math 'x>0' /data/Data/dHCP_1/dhcp_3rd_release_atlas/week-40_hemi-left_space-dhcpSym_dens-40k_desc-medialwallsymm_mask.shape.gii -var x /data/Data/dHCP_1/dhcp_3rd_release_atlas/week-40_hemi-left_space-dhcpSym_dens-40k_desc-medialwallsymm_mask.shape.gii]]></Value>
+      </MD>
+      <MD>
+         <Name><![CDATA[WorkingDirectory]]></Name>
+         <Value><![CDATA[/home/lw19]]></Value>
+      </MD>
+   </MetaData>
+   <LabelTable>
+      <Label Key="0" Red="1" Green="1" Blue="1" Alpha="0"><![CDATA[???]]></Label>
+   </LabelTable>
+<DataArray Intent="NIFTI_INTENT_NORMAL"
+           DataType="NIFTI_TYPE_FLOAT32"
+           ArrayIndexingOrder="RowMajorOrder"
+           Dimensionality="1"
+           Dim0="40962"
+           Encoding="GZipBase64Binary"
+           Endian="LittleEndian"
+           ExternalFileName=""
+           ExternalFileOffset="0">
+   <MetaData>
+      <MD>
+         <Name><![CDATA[Name]]></Name>
+         <Value><![CDATA[#1]]></Value>
+      </MD>
+   </MetaData>
+   <Data>eJzt3AtunDAUBdDsrFvr0qtUGhXRZ/thwDbkXOlolBkw/oOSUb6+fv/6+pvv1xG2KX02qh6j2rxvW639Z+vZusboNrfGHJ5gP4ejOV1LVN4V9TlS71XXYGufONKvEGmt3dr7tWNac9NcBUZp7TP2IYB3iZ4zW8kck7mfjMiZfoleV5Zt875/op+PlNfqw975eGVmjw3r2s+RaO6U5lJ2fo3K7L78tHX7CgCwkugZZf8sFT1jlZ69ss9iV2WVPutpV1TWlX0RfXbknCvrku3TnnMBAAAAnqb2e5sZdRh9bQAAAAAAyH4XsfT9whnpacPduXI8zo6XjMud63KV/WD/WVTPWf30Zvot1z/RHJxVj+ja2fUQHROtwdJ5mTL3Zc/st1Hz4slkbGaPNwAw3+eZYPuaeVa48jmk93mldkytvO1r5jpX97esk9nrb0Vv75fe9u3nzdv7CQAAAAAAAAAAZou+q1P7Dlj0c893x85mX/ezZZ2t38jxkusye/3NXvtv6ofS2LbauHI/rJhs3T7HPK19Z7JtV88cy5S/fc3Wp1WH2rWy+Snz/8m5c4xG74uZeozsBwAAAAAAAAAAAAAAAAAAAAC4W/Z/Zxz9nyS1ckf/PxPOzY/SGGXH3TizquyeBQAAAAAAAAAAAAAAAAAAAAAAAAAAwFyzUqtLq26fz1Zu31tydx9m5kFrXO8cd3PoWZm9n87Yu4/sgUf2zivrKCIiss3se+gTbftNP/b121Ncub6in69el59zS2WcacOIzB5vgJLtPmW/Aq7Seu7aHxudH5Xj+Wpd+/tJbfwz41ka42j+ZHPk+Lv7qTfZsjL1uKMNK/db9rj9sT31yZQBTxbN68xcr607+IlEROSdmX1/AQAAAAAAAIA3qP1NvvRe6bwV/s7/1kRtLI1T6bwZ/XT3WLfm8Crz60gZpWN76pOdD8whIiISZfb9CXgn+w3c57OeZq6vUdc883wT9ZP9CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnuc70XvR+9Ex22Oj7N/P1ikq52i7RuTOcZjRnhmJ2php81P76Uw9j87/1dbLXZm9j/Ku+SQi8tbMvj8A8x3dL+wn8L/Mmui9H/ee1ypzVD/0ZPZ4Qo08N9kxzI7zqvPkc/0j9eldC9aPyHXZr5Fo7WTX5fbYzHXfdP8s7VGtNtfK274eqUfPsbWxvLIfR4xr6fOzbbmzX2bnzDiMWss/kYiIrJnZ94cn2vadfvzXD63PVu+nq+s3Yt21rlG77tFkzp09hgAAAAAAAAAAAAAA8PP8Ac0mDRs=</Data>
+</DataArray>
+</GIFTI>
