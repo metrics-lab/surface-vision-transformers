@@ -2,58 +2,52 @@
 # @Date:   31-08-2022 01:00:00
 
 MODEL: ms-sit
-SCRIPT: train
 
 ##################################  DATA & TASK  ##################################
 
 mesh_resolution:
   ico_mesh: 6 #resolution of the input mesh
   ico_grid: 5 #resolution of the grid used to extract patches
-  sampling: msm #sampling used for mesh resampling and patch extraction #msm or wb
   reorder: True #reorder the sequence of patches
 
-ico_0_grid:
+sub_ico_0:
     num_patches: 20 
     num_vertices: 2145
 
-ico_1_grid:
+sub_ico_1:
     num_patches: 80 
     num_vertices: 561 
 
-ico_2_grid:
+sub_ico_2:
     num_patches: 320 
     num_vertices: 153 
 
-ico_3_grid:
+sub_ico_3:
     num_patches: 1280
     num_vertices: 45
 
-ico_4_grid:
+sub_ico_4:
     num_patches: 5120
     num_vertices: 15
 
-ico_5_grid:
+sub_ico_5:
     num_patches: 20480
     num_vertices: 6
 
 data:
   path_to_data: /drive/data #/home/sd20/data/,  /drive/data
-  path_to_template: /home/sd20/data/template_spheres #
-  path_to_workdir: /home/sd20/workspace/transformers #
-  dataset: UKB #dHCP, HCP, UKB, MindBoggle
-  dataloader: metrics #metrics, numpy
+  path_to_template: ../utils/
+  path_to_workdir: .. #
+  dataset: MindBoggle #dHCP, HCP, UKB, MindBoggle
+  loader: metrics #metrics
   task: segmentation #scan_age, birth_age, sex
-  configuration: template #MSMSulc, native, freesurfer
-  masking: False #True to mask the cut. 
-  masking_preprocess: False #UKB, individual
-  hemi: half #half, full
-  hemi_part: all #all, left, right 
+  configuration: MSMSulc #MSMSulc, native, freesurfer; MSMSulc for MindBoggle
   normalise: sub-standardise #normalise,standardise, False
   modality: cortical_metrics #cortical_metrics, fMRI
   clipping: True #True, False
 
 logging:
-  folder_to_save_model: "{}/logs/{}/{}/{}/MS-SiT/{}/ico_grid_{}/{}" #{dataset},{modality},{task},{grid resolution},{configuration}
+  folder_to_save_model: "{}/logs/MS-SiT/{}" #{dataset},{modality},{task},{grid resolution},{configuration}
 
 ###################################  MODEL  ####################################
 
@@ -61,7 +55,7 @@ transformer:
   dim: 48 #96, 48, 192
   depth: [2,2,6,2] # [1,1,3,1] [2,2,6,2]number of blocks per layer
   heads: [3,6,12,24] # number of head per layer [3,6,12,24] 
-  channels: [3,1] #[3,1] for UKB and [0,1] for mindboggle
+  channels: [0,1] #[3,1] for UKB and [0,1] for mindboggle
   window_size: [64,64,64,320] #320,80
   window_size_factor: 2
   mlp_ratio: 4
@@ -85,7 +79,6 @@ training:
   lambda_dice: 1.0  #default 1.0
   lambda_ce: 1.0  #default 1.0
   testing: True
-  testing_debug: False
   init_weights: False #ssl, imagenet or False, transfer-learning, restart
   init_optim: False #restart, False
   finetuning: True

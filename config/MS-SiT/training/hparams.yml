@@ -1,33 +1,45 @@
 # @Author: Simon Dahan
 # @Last Modified time: 2022-01-12 14:11:23
-resolution:
-  ico: 6            ## full mesh resolution
-  sub_ico: 4        ## patching grid resolution
+
+MODEL: ms-sit
+
+mesh_resolution:
+  ico_mesh: 6    ## full mesh resolution
+  ico_grid: 4    ## patching grid resolution
+  reorder: True  ## reorder the patches; only for ms-sit
 
 data:
-  data_path: ../../data/ico_res_{}/{}/{}
+  path_to_workdir: ..
+  path_to_numpy: ../data/ico_res_{}/{}/{}
   task: scan_age #scan_age # birth_age
   configuration: template #template # native
-  dataset: dHCP                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+  dataset: dHCP     
+  loader: metrics #metrics, numpy   
+
+  #### following parameters are only for "loader:metrics" 
+  path_to_metrics: /home/sd20/data/{}/metrics/ico_6_msm/base/regression_{}_space_features #TODO: replace with your datapath
+  path_to_template: ../utils/
+  normalise: sub-standardise          
+  clipping: True    
+  channels: [0,1,2,3]    
+  masking: True # True to mask the cut (need a mask template)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 
 logging:
-  folder_to_save_model: "../../logs/SiT/"
+  folder_to_save_model: ../logs/SiT/
 
 training:
   LR: 0.00001
   bs: 16
   bs_val: 1
   epochs: 30
-  gpu: 1  
-  l1loss: False
+  gpu: 1
+  loss: mse #mse, l1
   testing: True
   val_epoch: 10
   load_weights_ssl: False
   load_weights_imagenet: False
   save_ckpt: True
   finetuning: True
-  dataset_ssl: 'dhcp'
-  use_confounds: False
 
 weights: 
   ssl_mpp: '..' # path to .pt checkpoint
@@ -48,7 +60,7 @@ transformer:
   attention_dropout: 0.0
   drop_path_rate: 0.1 #0.1 default to try
   use_pos_emb: False
-  shifted_attention: True
+  shifted_attention: False
   model: ms-sit #ms-sit
 
 optimisation:
@@ -95,3 +107,7 @@ sub_ico_4:
 sub_ico_5:
     num_patches: 20480
     num_vertices: 6
+
+augmentation: 
+  prob_augmentation: 0.0
+  warp_ico: 2
