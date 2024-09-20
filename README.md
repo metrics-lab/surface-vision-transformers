@@ -120,7 +120,7 @@ To simplify reproducibility of the work, data has been already pre-processed (co
 
 Cortical surface metrics (cortical thickness, curvature, myelin maps and sulcal depth maps) already processed as in [S. Dahan et al 2021](https://arxiv.org/abs/2203.16414) and [A. Fawaz et al 2021](https://www.biorxiv.org/content/10.1101/2021.12.01.470730v1) are available upon request. 
 
-<details>
+<details open>
     <summary><b> Sign dHCP access agreement</b></summary>
     <p>
     To access the data please:
@@ -133,13 +133,14 @@ Cortical surface metrics (cortical thickness, curvature, myelin maps and sulcal 
     </p>
 </details>
 
-<details>
+<details open>
     <summary><b> Create a G-Node GIN account</b></summary>
     <p>
     Please create an account on the GIN plateform <a href="https://gin.g-node.org/">here</a> 
     </p>
 </details>
-<details>
+
+<details open>
   <summary><b> Get access to the G-Node GIN repository</b></summary>
       <p>
       <ul type="circle">
