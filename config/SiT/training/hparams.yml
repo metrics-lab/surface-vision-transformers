@@ -28,10 +28,10 @@ logging:
   folder_to_save_model: ../logs/SiT/
 
 training:
-  LR: 0.00001
-  bs: 32
+  LR: 0.0001
+  bs: 128
   bs_val: 1 #always 1
-  epochs: 30
+  epochs: 200
   gpu: 0
   loss: mse #mse, l1
   testing: True
@@ -61,7 +61,7 @@ transformer:
   model: SiT
 
 optimisation:
-  optimiser: SGD
+  optimiser: SGD #Adam, AdamW, SGD
 
 Adam:
   weight_decay: 0.

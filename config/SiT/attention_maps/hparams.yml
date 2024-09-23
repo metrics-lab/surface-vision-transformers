@@ -1,0 +1,7 @@
+# @Author: Simon Dahan @SD3004
+# @Date:   31-08-2022 01:00:00
+
+path_to_ckpt: '/home/sd20/workspace/github/metrics-lab/surface-vision-transformers/logs/SiT/2024-09-23-12:42:43-tiny-finetune'
+gpu: 0
+split_to_test: train #val, train
+subject_id: [2] 
