@@ -59,8 +59,6 @@ def train(config):
     #data
     dataset = config['data']['dataset']
     task = config['data']['task']
-    num_patches = config['sub_ico_{}'.format(ico_grid)]['num_patches']
-    num_vertices = config['sub_ico_{}'.format(ico_grid)]['num_vertices']
     loader_type = config['data']['loader']
 
     if task == 'sex':
@@ -535,6 +533,6 @@ if __name__ == '__main__':
 
     with open(args.config) as f:
         config = yaml.safe_load(f)
-
+        
     # Call training
     train(config)
