@@ -27,6 +27,15 @@ Here, Surface Vision Transformer (**SiT**) is applied on cortical data for pheno
 <a id="updates"></a>
 
 <details>
+    <summary><b> V.3.1 - 24.09.24</b></summary>
+    Minor codebase update - 24.09.24
+    <ul type="circle">
+        <li> Updating pre-training script for Masked Patch Pre-training (MPP)</li>
+    </ul>
+</details>
+
+
+<details>
     <summary><b> 🔥 V.3.0 - 19.09.24</b></summary>
     Major codebase update - 18.09.24
     <ul type="circle">

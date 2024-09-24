@@ -28,9 +28,8 @@ import sys
 import timm
 from datetime import datetime
 
-
-sys.path.append('../')
 sys.path.append('./')
+sys.path.append('../')
 sys.path.append('../../')
 
 import torch
