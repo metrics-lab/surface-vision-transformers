@@ -14,7 +14,7 @@ data:
   task: scan_age #scan_age # birth_age
   configuration: template #template # native
   dataset: dHCP     
-  loader: numpy #metrics, numpy        
+  loader: metrics #metrics, numpy        
 
   #### following parameters are only for "loader:metrics" 
   path_to_metrics: /home/sd20/data/{}/metrics/ico_6_msm/base/regression_{}_space_features #TODO: replace with your datapath

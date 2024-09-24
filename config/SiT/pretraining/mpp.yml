@@ -1,28 +1,32 @@
 # @Author: Simon Dahan
 # @Last Modified time: 2022-01-12 14:11:23
 
+MODEL: sit
 SSL: mpp
 
-resolution:
-  ico: 6            ## full mesh resolution
-  sub_ico: 2        ## patching grid resolution
+mesh_resolution:
+  ico_mesh: 6            ## full mesh resolution
+  ico_grid: 2        ## patching grid resolution
 
 data:
+  path_to_workdir: ..
   data_path: ../../data/{}/{}
+  path_to_numpy: ../data/ico_res_{}/{}/{}
   task: scan_age #scan_age # birth_age
   configuration: template #template # native
-  dataset: dHCP                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+  dataset: dHCP    
+  loader: numpy #metrics, numpy   s                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
 
 logging:
-  folder_to_save_model: "../../logs/SiT/"
+  folder_to_save_model: ../logs/SiT/
 
 training:
   LR: 0.0003
   bs: 32
   bs_val: 1
-  epochs: 20
+  epochs: 50
   gpu: 0
-  l1loss: False
+  loss: mse #mse, l1
   testing: False
   val_epoch: 5
   load_weights_ssl: False
