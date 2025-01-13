@@ -8,7 +8,12 @@ import pandas as pd
 
 
 from torch.utils.data import Dataset
-from logging import raiseExceptions
+
+from scipy.spatial.transform import Rotation as R
+
+
+from surfaces.metric_resample import *
+from surfaces.metric_resample_labels import *
 
 
 class dataset_cortical_surfaces(Dataset):
